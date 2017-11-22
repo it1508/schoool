@@ -17,8 +17,12 @@ public class Cars {
     }
     private String name;
     protected int boost = 100;
-    private Color first = Color.BLUE;
-    private Color second = Color.GREEN;
+    private int Red1 = 255;
+    private  int Green1 = 255;
+    private int Blue1 = 255;
+    private  int Green2 = 255;
+    private int Red2 = 255;
+    private  int Blue2 = 255;
     private Position position = Position.GOALKEEPER;
     
     public Cars(String jmeno){
@@ -38,21 +42,56 @@ public class Cars {
         this.name = name;
     }
 
-    public Color getFirst() {
-        return first;
+    public int getRed1() {
+        return Red1;
     }
 
-    public void setFirst(Color first) {
-        this.first = first;
+    public void setRed1(int Red1) {
+        if(Red1 >= 0 && Red1 < 256)
+            this.Red1 = Red1;
     }
 
-    public Color getSecond() {
-        return second;
+    public int getGreen1() {
+        return Green1;
     }
 
-    public void setSecond(Color second) {
-        this.second = second;
+    public void setGreen1(int Green1) {
+        this.Green1 = Green1;
     }
+
+    public int getBlue1() {
+        return Blue1;
+    }
+
+    public void setBlue1(int Blue1) {
+        this.Blue1 = Blue1;
+    }
+
+    public int getGreen2() {
+        return Green2;
+    }
+
+    public void setGreen2(int Green2) {
+        this.Green2 = Green2;
+    }
+
+    public int getRed2() {
+        return Red2;
+    }
+
+    public void setRed2(int Red2) {
+        this.Red2 = Red2;
+    }
+
+    public int getBlue2() {
+        return Blue2;
+    }
+
+    public void setBlue2(int Blue2) {
+        this.Blue2 = Blue2;
+    }
+
+    
 
     public Position getPosition() {
         return position;

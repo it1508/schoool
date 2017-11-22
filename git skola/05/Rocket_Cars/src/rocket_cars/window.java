@@ -5,7 +5,6 @@
  */
 package rocket_cars;
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -49,7 +48,7 @@ public class window extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         carList = new javax.swing.JList<>();
 
-        removeMenu.setText("jMenuItem1");
+        removeMenu.setText("Remove object");
         removeMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeMenuActionPerformed(evt);
@@ -57,7 +56,7 @@ public class window extends javax.swing.JFrame {
         });
         popupMenu.add(removeMenu);
 
-        removeAllMenu.setText("jMenuItem1");
+        removeAllMenu.setText("Remove all");
         removeAllMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeAllMenuActionPerformed(evt);
@@ -65,7 +64,7 @@ public class window extends javax.swing.JFrame {
         });
         popupMenu.add(removeAllMenu);
 
-        editMenu.setText("jMenuItem1");
+        editMenu.setText("Edit object");
         editMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editMenuActionPerformed(evt);
@@ -73,7 +72,7 @@ public class window extends javax.swing.JFrame {
         });
         popupMenu.add(editMenu);
 
-        openFileMenu.setText("jMenuItem1");
+        openFileMenu.setText("Open file");
         openFileMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openFileMenuActionPerformed(evt);
@@ -81,7 +80,8 @@ public class window extends javax.swing.JFrame {
         });
         popupMenu.add(openFileMenu);
 
-        saveFileMenu.setText("jMenuItem1");
+        saveFileMenu.setText("Save file");
+        saveFileMenu.setToolTipText("");
         saveFileMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveFileMenuActionPerformed(evt);
@@ -183,7 +183,13 @@ public class window extends javax.swing.JFrame {
     }//GEN-LAST:event_removeAllMenuActionPerformed
 
     private void editMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMenuActionPerformed
-        // TODO add your handling code here:
+        if (carList.getSelectedIndex() > -1) {
+            Cars car = (Cars) model.get(carList.getSelectedIndex());
+            Edit dialog = new Edit(this, true, car);
+            if (dialog.showDialog().equalsIgnoreCase("OK")) {
+                model.setElementAt(dialog.getCar(), carList.getSelectedIndex());
+            }
+        }
     }//GEN-LAST:event_editMenuActionPerformed
 
     private void openFileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openFileMenuActionPerformed
@@ -205,7 +211,7 @@ public class window extends javax.swing.JFrame {
                     /*person.setAge(Integer.parseInt(attr[2]));
                     person.setHeight(Float.parseFloat(attr[3]));
                     person.setWeight(Integer.parseInt(attr[4]));*/
-                    if (attr[5] == "GOALKEEPER") {
+                    if (attr[2] == "GOALKEEPER") {
                         person.setPosition(Cars.Position.GOALKEEPER);
                     } else {
                         person.setPosition(Cars.Position.STRIKER);
@@ -224,13 +230,10 @@ public class window extends javax.swing.JFrame {
             bw.write("class;name;age;height;weight;sex");
             bw.newLine();
             for (int i = 0; i < model.getSize(); i++) {
-                Cars person = (Cars) model.get(i);
-                String output = person.getClass().getSimpleName() + ";"
-                        + person.getName() + ";"/*
-                        + person.getAge() + ";"
-                        + person.getHeight() + ";"
-                        + person.getWeight() + ";"
-                        + person.getSex()*/;
+                Cars car = (Cars) model.get(i);
+                String output = car.getClass().getSimpleName() + ";"
+                        + car.getName() + ";"
+                        + car.getPosition();
                 bw.write(output);
                 if (i < model.getSize() - 1) {
                     bw.newLine();

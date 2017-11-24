@@ -5,7 +5,7 @@
  */
 package rocket_cars;
 
-import java.awt.Color;
+
 
 /**
  *
@@ -15,6 +15,7 @@ public class Cars {
     public enum Position {
         GOALKEEPER,STRIKER
     }
+    
     private String name;
     protected int boost = 100;
     private int Red1 = 255;
@@ -49,6 +50,10 @@ public class Cars {
     public void setRed1(int Red1) {
         if(Red1 >= 0 && Red1 < 256)
             this.Red1 = Red1;
+        if(Red1 > 255)
+            this.Red1 = 255;
+        if(Red1 < 0)
+            this.Red1 = 0;
     }
 
     public int getGreen1() {
@@ -56,7 +61,12 @@ public class Cars {
     }
 
     public void setGreen1(int Green1) {
-        this.Green1 = Green1;
+        if(Green1 >= 0 && Green1 < 256)
+            this.Green1 = Green1;
+        if(Green1 > 255)
+            this.Green1 = 255;
+        if(Green1 < 0)
+            this.Green1 = 0;
     }
 
     public int getBlue1() {
@@ -64,7 +74,12 @@ public class Cars {
     }
 
     public void setBlue1(int Blue1) {
-        this.Blue1 = Blue1;
+        if(Blue1 >= 0 && Blue1 < 256)
+            this.Blue1 = Blue1;
+        if(Blue1 > 255)
+            this.Blue1 = 255;
+        if(Blue1 < 0)
+            this.Blue1 = 0;
     }
 
     public int getGreen2() {
@@ -72,7 +87,12 @@ public class Cars {
     }
 
     public void setGreen2(int Green2) {
-        this.Green2 = Green2;
+        if(Green2 >= 0 && Green2 < 256)
+            this.Green2 = Green2;
+        if(Green2 > 255)
+            this.Green2 = 255;
+        if(Green2 < 0)
+            this.Green2 = 0;
     }
 
     public int getRed2() {
@@ -80,7 +100,12 @@ public class Cars {
     }
 
     public void setRed2(int Red2) {
-        this.Red2 = Red2;
+        if(Red2 >= 0 && Red2 < 256)
+            this.Red2 = Red2;
+        if(Red2 > 255)
+            this.Red2 = 255;
+        if(Red2 < 0)
+            this.Red2 = 0;
     }
 
     public int getBlue2() {
@@ -88,7 +113,12 @@ public class Cars {
     }
 
     public void setBlue2(int Blue2) {
-        this.Blue2 = Blue2;
+        if(Blue2 >= 0 && Blue2 < 256)
+            this.Blue2 = Blue2;
+        if(Blue2 > 255)
+            this.Blue2 = 255;
+        if(Blue2 < 0)
+            this.Blue2 = 0;
     }
 
     

@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package rocket_cars;
-
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 /**
  *
  * @author student
@@ -15,11 +19,24 @@ public class Octane extends Cars {
     private float height =  (float) 36.16;
     private float lenght = (float) 118.01;
     private int SurfArea = 34495;
+ 
     
     
     public Octane(String jmeno) {
         super(jmeno);
     }
+    
+    public void draw(Graphics window)
+ {
+    Image wall = null;
+
+    try 
+        {wall = ImageIO.read(new File("octane.png"));}
+    catch (IOException e)
+        {e.printStackTrace();}
+
+    
+  }
     
     public float getTurnAvg() {
         return TurnAvg;

@@ -47,6 +47,7 @@ public class window extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         carList = new javax.swing.JList<>();
+        imageLabel = new javax.swing.JLabel();
 
         removeMenu.setText("Remove object");
         removeMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -123,18 +124,18 @@ public class window extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nameTextField)
+                        .addGap(138, 138, 138)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nameTextField)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(selectCars, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(51, 51, 51))))
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selectCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,9 +148,12 @@ public class window extends javax.swing.JFrame {
                     .addComponent(selectCars, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addButton)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addButton)
+                        .addGap(113, 113, 113)
+                        .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
         );
 
         pack();
@@ -163,10 +167,16 @@ public class window extends javax.swing.JFrame {
         Cars auto;
         if (selectCars.getSelectedItem() == "Octane") {
             auto = new Octane(nameTextField.getText());
+            imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Uživatel\\Desktop\\michal\\git skola\\05\\octane.png"));
+        
         } else if(selectCars.getSelectedItem() == "Breakout") {
             auto = new Breakout(nameTextField.getText());
+            imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Uživatel\\Desktop\\michal\\git skola\\05\\breakout2.png"));
+        
         } else {
             auto = new Endo(nameTextField.getText());
+            imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Uživatel\\Desktop\\michal\\git skola\\05\\endo.png"));
+        
         }
         model.addElement(auto);
     }//GEN-LAST:event_addButtonActionPerformed
@@ -200,23 +210,24 @@ public class window extends javax.swing.JFrame {
             while ((s = br.readLine()) != null) {
                 if (i > 0) {
                     String[] attr = s.split(";");
-                    Cars person;
+                    Cars car;
                     if (attr[0].equalsIgnoreCase("Octane")) {
-                        person = new Octane(attr[1]);
+                        car = new Octane(attr[1]);
                     } else if(attr[0].equalsIgnoreCase("Breakout")){
-                        person = new Breakout(attr[1]);
+                        car = new Breakout(attr[1]);
                     } else {
-                        person = new Endo(attr[1]);
+                        car = new Endo(attr[1]);
                     }
                     /*person.setAge(Integer.parseInt(attr[2]));
                     person.setHeight(Float.parseFloat(attr[3]));
                     person.setWeight(Integer.parseInt(attr[4]));*/
                     if (attr[2] == "GOALKEEPER") {
-                        person.setPosition(Cars.Position.GOALKEEPER);
+                        car.setPosition(Cars.Position.GOALKEEPER);
                     } else {
-                        person.setPosition(Cars.Position.STRIKER);
+                        car.setPosition(Cars.Position.STRIKER);
                     }
-                    model.addElement(person);
+                    
+                    model.addElement(car);
                 }
                 i++;
             }
@@ -227,7 +238,7 @@ public class window extends javax.swing.JFrame {
 
     private void saveFileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFileMenuActionPerformed
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("soubor.txt"))) {
-            bw.write("class;name;age;height;weight;sex");
+            bw.write("class;name;position");
             bw.newLine();
             for (int i = 0; i < model.getSize(); i++) {
                 Cars car = (Cars) model.get(i);
@@ -285,6 +296,7 @@ public class window extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JList<String> carList;
     private javax.swing.JMenuItem editMenu;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTextField;

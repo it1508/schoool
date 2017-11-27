@@ -171,11 +171,11 @@ public class window extends javax.swing.JFrame {
         
         } else if(selectCars.getSelectedItem() == "Breakout") {
             auto = new Breakout(nameTextField.getText());
-            imageLabel.setIcon(new javax.swing.ImageIcon("D:\\studenti\\IT3\\hluchnik\\pcv\\git skola\\05\\Rocket_Cars\\src\\image\\breakout.png"));
+            imageLabel.setIcon(new javax.swing.ImageIcon("breakout2.png"));
         
         } else {
             auto = new Endo(nameTextField.getText());
-            imageLabel.setIcon(new javax.swing.ImageIcon("D:\\studenti\\IT3\\hluchnik\\pcv\\git skola\\05\\Rocket_Cars\\src\\image\\endo.png"));
+            imageLabel.setIcon(new javax.swing.ImageIcon("endo.png"));
         
         }
         model.addElement(auto);

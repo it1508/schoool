@@ -35,17 +35,13 @@ public class Edit extends javax.swing.JDialog {
             StrikerButton.setSelected(true);            
         }
         
-        int b = (int)BSpinner1.getValue();
-        int r = (int)RSpinner1.getValue();
-        int g = (int)GSpinner1.getValue();
-        int r2 = (int)RSpinner2.getValue();
-        int g2= (int)GSpinner2.getValue();
-        int b2 = (int)BSpinner2.getValue();
-        ColorPanel1.setBackground( new Color(r,g,b) );
-        ColorPanel2.setBackground( new Color(r2,g2,b2));
-        //if (car.getClass().getSimpleName().equalsIgnoreCase("ENDO")) {
-        //imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Uživatel\\Desktop\\michal\\git skola\\05\\breakout2.png"));
         
+        if (car.getClass().getSimpleName().equalsIgnoreCase("Endo")) {
+            imageLabel.setIcon(new javax.swing.ImageIcon("endo.png"));
+        } else if (car.getClass().getSimpleName().equalsIgnoreCase("Octane")) {
+            imageLabel.setIcon(new javax.swing.ImageIcon("octane.png"));
+        } else
+            imageLabel.setIcon(new javax.swing.ImageIcon("breakout2.png"));
     }
     
     public String showDialog() {
@@ -178,6 +174,36 @@ public class Edit extends javax.swing.JDialog {
         RSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 RSpinner1StateChanged(evt);
+            }
+        });
+
+        GSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                GSpinner1StateChanged(evt);
+            }
+        });
+
+        BSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                BSpinner1StateChanged(evt);
+            }
+        });
+
+        RSpinner2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                RSpinner2StateChanged(evt);
+            }
+        });
+
+        GSpinner2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                GSpinner2StateChanged(evt);
+            }
+        });
+
+        BSpinner2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                BSpinner2StateChanged(evt);
             }
         });
 
@@ -323,11 +349,43 @@ public class Edit extends javax.swing.JDialog {
         int b = (int)BSpinner1.getValue();
         int r = (int)RSpinner1.getValue();
         int g = (int)GSpinner1.getValue();
+        ColorPanel1.setBackground( new Color(r,g,b) );
+    }//GEN-LAST:event_RSpinner1StateChanged
+
+    private void GSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_GSpinner1StateChanged
+        int b = (int)BSpinner1.getValue();
+        int r = (int)RSpinner1.getValue();
+        int g = (int)GSpinner1.getValue();
+        ColorPanel1.setBackground( new Color(r,g,b) );
+    }//GEN-LAST:event_GSpinner1StateChanged
+
+    private void BSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_BSpinner1StateChanged
+        int b = (int)BSpinner1.getValue();
+        int r = (int)RSpinner1.getValue();
+        int g = (int)GSpinner1.getValue();
+        ColorPanel1.setBackground( new Color(r,g,b) );
+    }//GEN-LAST:event_BSpinner1StateChanged
+
+    private void RSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_RSpinner2StateChanged
         int r2 = (int)RSpinner2.getValue();
         int g2= (int)GSpinner2.getValue();
         int b2 = (int)BSpinner2.getValue();
-        ColorPanel1.setBackground( new Color(r,g,b) );
-    }//GEN-LAST:event_RSpinner1StateChanged
+        ColorPanel2.setBackground( new Color(r2,g2,b2) );
+    }//GEN-LAST:event_RSpinner2StateChanged
+
+    private void GSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_GSpinner2StateChanged
+        int r2 = (int)RSpinner2.getValue();
+        int g2= (int)GSpinner2.getValue();
+        int b2 = (int)BSpinner2.getValue();
+        ColorPanel2.setBackground( new Color(r2,g2,b2) );
+    }//GEN-LAST:event_GSpinner2StateChanged
+
+    private void BSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_BSpinner2StateChanged
+        int r2 = (int)RSpinner2.getValue();
+        int g2= (int)GSpinner2.getValue();
+        int b2 = (int)BSpinner2.getValue();
+        ColorPanel2.setBackground( new Color(r2,g2,b2) );
+    }//GEN-LAST:event_BSpinner2StateChanged
 
     /**
      * @param args the command line arguments

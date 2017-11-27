@@ -1,6 +1,4 @@
-class;name;age;height;weight;sex
-Endo;ssassd;GOALKEEPER
-Endo;ssassd;GOALKEEPER
-Endo;ssassd;GOALKEEPER
-Breakout;ssassd;GOALKEEPER
-Breakout;ssassd;GOALKEEPER
+class;name;position
+Endo;;GOALKEEPER
+Endo;;GOALKEEPER
+Endo;;GOALKEEPER

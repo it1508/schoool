@@ -328,14 +328,29 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="GSpinner1">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="GSpinner1StateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="BSpinner1">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="BSpinner1StateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="RSpinner2">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="RSpinner2StateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="GSpinner2">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="GSpinner2StateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="BSpinner2">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="BSpinner2StateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="imageLabel">
       <Properties>

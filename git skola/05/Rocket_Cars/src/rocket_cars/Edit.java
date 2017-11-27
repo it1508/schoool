@@ -175,6 +175,12 @@ public class Edit extends javax.swing.JDialog {
 
         jLabel10.setText("B");
 
+        RSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                RSpinner1StateChanged(evt);
+            }
+        });
+
         imageLabel.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,6 +318,16 @@ public class Edit extends javax.swing.JDialog {
          actionButton = "Storno";
         this.dispose();
     }//GEN-LAST:event_CloseButtonActionPerformed
+
+    private void RSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_RSpinner1StateChanged
+        int b = (int)BSpinner1.getValue();
+        int r = (int)RSpinner1.getValue();
+        int g = (int)GSpinner1.getValue();
+        int r2 = (int)RSpinner2.getValue();
+        int g2= (int)GSpinner2.getValue();
+        int b2 = (int)BSpinner2.getValue();
+        ColorPanel1.setBackground( new Color(r,g,b) );
+    }//GEN-LAST:event_RSpinner1StateChanged
 
     /**
      * @param args the command line arguments

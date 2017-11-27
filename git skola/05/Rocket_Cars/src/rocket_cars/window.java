@@ -167,15 +167,15 @@ public class window extends javax.swing.JFrame {
         Cars auto;
         if (selectCars.getSelectedItem() == "Octane") {
             auto = new Octane(nameTextField.getText());
-            imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Uživatel\\Desktop\\michal\\git skola\\05\\octane.png"));
+            imageLabel.setIcon(new javax.swing.ImageIcon("/image/octane.png"));
         
         } else if(selectCars.getSelectedItem() == "Breakout") {
             auto = new Breakout(nameTextField.getText());
-            imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Uživatel\\Desktop\\michal\\git skola\\05\\breakout2.png"));
+            imageLabel.setIcon(new javax.swing.ImageIcon("D:\\studenti\\IT3\\hluchnik\\pcv\\git skola\\05\\Rocket_Cars\\src\\image\\breakout.png"));
         
         } else {
             auto = new Endo(nameTextField.getText());
-            imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Uživatel\\Desktop\\michal\\git skola\\05\\endo.png"));
+            imageLabel.setIcon(new javax.swing.ImageIcon("D:\\studenti\\IT3\\hluchnik\\pcv\\git skola\\05\\Rocket_Cars\\src\\image\\endo.png"));
         
         }
         model.addElement(auto);

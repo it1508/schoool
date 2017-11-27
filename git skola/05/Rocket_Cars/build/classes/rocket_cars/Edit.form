@@ -323,6 +323,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="RSpinner1">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="RSpinner1StateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="GSpinner1">
     </Component>

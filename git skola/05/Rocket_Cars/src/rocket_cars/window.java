@@ -167,7 +167,7 @@ public class window extends javax.swing.JFrame {
         Cars auto;
         if (selectCars.getSelectedItem() == "Octane") {
             auto = new Octane(nameTextField.getText());
-            imageLabel.setIcon(new javax.swing.ImageIcon("/image/octane.png"));
+            imageLabel.setIcon(new javax.swing.ImageIcon("octane.png"));
         
         } else if(selectCars.getSelectedItem() == "Breakout") {
             auto = new Breakout(nameTextField.getText());

@@ -43,7 +43,7 @@ public class Edit extends javax.swing.JDialog {
         int b2 = (int)BSpinner2.getValue();
         ColorPanel1.setBackground( new Color(r,g,b) );
         ColorPanel2.setBackground( new Color(r2,g2,b2));
-        //if ( == "") {
+        //if (car.getClass().getSimpleName().equalsIgnoreCase("ENDO")) {
         //imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Uživatel\\Desktop\\michal\\git skola\\05\\breakout2.png"));
         
     }

@@ -36,10 +36,6 @@ abstract class Tvar {
         return this.active;
     }
     
-    abstract public void setSize(int size);
-    abstract public int getSize();
-    abstract public void setSpeed(int speed);
-    abstract public int getSpeed();
     abstract public boolean detect(int x, int y);
     abstract public void paint(Graphics g);
     abstract public void animate(Platno p);

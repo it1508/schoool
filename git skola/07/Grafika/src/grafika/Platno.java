@@ -57,7 +57,7 @@ public class Platno extends JComponent implements MouseListener, MouseMotionList
         this.addMouseMotionListener(this); 
         this.addKeyListener(this);
         this.setFocusable(true);
-        this.timer = new Timer(50,this);
+        this.timer = new Timer(10,this);
         timer.start();
     }
     
@@ -130,6 +130,7 @@ public class Platno extends JComponent implements MouseListener, MouseMotionList
     public void mouseDragged(MouseEvent me) {
         if(drag){
             Tvar b = this.points.get(this.points.size()-1);
+            
             b.point.x = me.getX();
             b.point.y = me.getY();
             p.x = me.getX();
@@ -179,22 +180,7 @@ public class Platno extends JComponent implements MouseListener, MouseMotionList
             case KeyEvent.VK_INSERT:
                 this.setPoint(p.x, p.y, true);
                 break;
-            case KeyEvent.VK_PAGE_UP:
-                if(b.getSize() < 50)
-                    b.setSize(1);
-                break;
-            case KeyEvent.VK_PAGE_DOWN:
-                if(b.getSize() > 10)
-                    b.setSize(-1);
-                break;
-            case KeyEvent.VK_END:
-                if(b.getSpeed() < 15)
-                    b.setSpeed(1);
-                break;
-            case KeyEvent.VK_HOME:
-                if(b.getSpeed() > -15)
-                    b.setSpeed(-1);
-                break;
+
         }
         this.repaint();
     }

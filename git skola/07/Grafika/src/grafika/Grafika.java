@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -30,8 +31,10 @@ public class Grafika {
     private JButton restartButton;
     private JLabel headLabel;
     private Image image;
+    private Timer timer;
     
     public Grafika(String title,int width,int height){
+;
         window = new JFrame(title);
         try{
             this.image = ImageIO.read(this.getClass().getResource("image.png"));
@@ -59,11 +62,15 @@ public class Grafika {
         drawButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Tlačítko tlačí");
-                int x = (int)Math.floor(Math.random()*platno.getWidth());
-                int y = (int)Math.floor(Math.random()*platno.getHeight());
-                platno.setPoint(x,y,true);
-                platno.repaint();
+                System.out.println("udelano 10 objektu");
+                
+                
+                for(int i=0;i<10;i++){
+                    int x = (int)Math.floor(Math.random()*platno.getWidth());
+                    int y = (int)Math.floor(Math.random()*platno.getHeight());
+                    platno.setPoint(x,y,true);
+                    platno.repaint();
+                }
             }
             
         });

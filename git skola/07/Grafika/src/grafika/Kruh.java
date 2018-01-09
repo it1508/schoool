@@ -29,15 +29,6 @@ public class Kruh extends Tvar{
         }
     }
     
-    @Override
-    public void setSize(int size){
-        this.radius += size;
-    }
-    
-    @Override
-    public int getSize(){
-        return this.radius;
-    }
     
 
     

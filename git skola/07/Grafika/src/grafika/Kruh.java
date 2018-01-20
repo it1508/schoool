@@ -23,7 +23,7 @@ public class Kruh extends Tvar{
         super(x, y, fill);
         this.radius = (int)Math.floor(Math.random()*20)+10;
         try{
-            this.image = ImageIO.read(this.getClass().getResource("image.png"));
+            this.image = ImageIO.read(this.getClass().getResource("terc.png"));
         }catch(IOException ex){
             
         }
@@ -41,11 +41,11 @@ public class Kruh extends Tvar{
         else
             g.setColor(this.color);      
             if(this.fill){
-                g.fillOval(this.point.x- this.radius,this.point.y- this.radius,2*this.radius,2*this.radius);
+                //g.fillOval(this.point.x- this.radius,this.point.y- this.radius,2*this.radius,2*this.radius);
                 g.drawImage(this.image, this.point.x - this.radius,this.point.y - this.radius,2*this.radius,2*this.radius, null);
             }
             else{
-                g.drawOval(this.point.x- this.radius,this.point.y- this.radius,2*this.radius,2*this.radius);
+                //g.drawOval(this.point.x- this.radius,this.point.y- this.radius,2*this.radius,2*this.radius);
                 g.drawImage(this.image, this.point.x - this.radius,this.point.y - this.radius,2*this.radius,2*this.radius, null);
             }
     }

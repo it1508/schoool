@@ -20,20 +20,27 @@ abstract class Tvar {
     protected boolean active;
     protected Tvar(int x, int y,boolean fill){
         this.point = new Point(x,y);
-        int red = (int)Math.floor(Math.random()*256);
-        int green = (int)Math.floor(Math.random()*256);
-        int blue = (int)Math.floor(Math.random()*256);
-        this.color = new Color(red,green,blue);
+        //int red = (int)Math.floor(Math.random()*256);
+        //int green = (int)Math.floor(Math.random()*256);
+        //int blue = (int)Math.floor(Math.random()*256);
+        //this.color = new Color(red,green,blue);
         this.fill = fill;
+        this.active = false;
     }
     
-    public boolean setActive(int curX, int curY){
-        if(this.detect(curX,curY)) {
+    public void setActive(int x, int y){
+        if(this.detect(x,y)){
             this.active = true;
-        } else {
-            this.active = false;
-        }
-        return this.active;
+        }        
+        else
+            this.active = false;            
+    }
+    
+        public boolean getActive(){
+        if(this.active)
+            return true;
+        else
+            return false;
     }
     
     abstract public boolean detect(int x, int y);

@@ -88,9 +88,12 @@ public class Grafika {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 //System.out.println("udelano 10 objektu");
-               
-                
-                /*for(int i=0;i<10;i++){
+               /*if(platno.timer.isRunning()){
+                    do{
+                        platno.time--;
+                    }while(platno.timer.);
+               }
+                for(int i=0;i<10;i++){
                     int x = (int)Math.floor(Math.random()*platno.getWidth());
                     int y = (int)Math.floor(Math.random()*platno.getHeight());
                     platno.setPoint(x,y,true);
@@ -104,6 +107,7 @@ public class Grafika {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("Restart");
+                timer.restart();
             }
             
         });
@@ -113,7 +117,7 @@ public class Grafika {
         //pane.add(pocet,BorderLayout.LINE_START);
         //pane.add(record,BorderLayout.LINE_END);
         //pane.add(cas,BorderLayout.LINE_END);
-        pane.add(drawButton,BorderLayout.AFTER_LAST_LINE);
+        //pane.add(restartButton,BorderLayout.AFTER_LAST_LINE);
         //pane.add(restartButton,BorderLayout.AFTER_LINE_ENDS);
         pane.add(platno,BorderLayout.CENTER);
         window.setVisible(true);

@@ -35,7 +35,8 @@ public class Platno extends JComponent implements MouseListener, MouseMotionList
     private int score;
     ArrayList<Tvar> points;
     private Timer timer;
-    public int time = 3;
+    private int pocet =1;
+    private int time = 30;
     private Tvar activeObj;
     private Font myFont = new Font("Aerial", Font.BOLD, 18);
     private Font myFont2 = new Font("Aerial", Font.BOLD, 60);
@@ -120,6 +121,10 @@ public class Platno extends JComponent implements MouseListener, MouseMotionList
                 this.activeObj = t;
                 this.points.remove(t);
                 score++;
+                int x = (int)Math.floor(Math.random()*getWidth());
+                int y = (int)Math.floor(Math.random()*getHeight());
+                setPoint(x,y,true);
+                this.repaint();
             }
         }
     }
@@ -183,6 +188,7 @@ public class Platno extends JComponent implements MouseListener, MouseMotionList
             g2.setColor(Color.red);     
             g2.drawString(str, size.width/2 -150, 290);
             g2.drawString(str2, size.width/2 -150, 220);
+            timer.stop();
         }
     }
 
@@ -207,7 +213,13 @@ public class Platno extends JComponent implements MouseListener, MouseMotionList
             t.animate(this);
             
         }
-        
+        if(pocet == 1){
+            int x = (int)Math.floor(Math.random()*getWidth());
+            int y = (int)Math.floor(Math.random()*getHeight());
+            setPoint(x,y,true);
+            pocet++;
+        }
+        time--;
         this.repaint();
     }
     

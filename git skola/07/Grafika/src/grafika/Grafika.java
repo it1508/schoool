@@ -107,7 +107,9 @@ public class Grafika {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("Restart");
-                timer.restart();
+                platno.time = 30;
+                platno.score = 0;
+                platno.timer.restart();
             }
             
         });
@@ -117,7 +119,7 @@ public class Grafika {
         //pane.add(pocet,BorderLayout.LINE_START);
         //pane.add(record,BorderLayout.LINE_END);
         //pane.add(cas,BorderLayout.LINE_END);
-        //pane.add(restartButton,BorderLayout.AFTER_LAST_LINE);
+        pane.add(restartButton,BorderLayout.AFTER_LAST_LINE);
         //pane.add(restartButton,BorderLayout.AFTER_LINE_ENDS);
         pane.add(platno,BorderLayout.CENTER);
         window.setVisible(true);

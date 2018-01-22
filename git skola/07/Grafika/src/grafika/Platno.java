@@ -32,14 +32,14 @@ import javax.swing.Timer;
 public class Platno extends JComponent implements MouseListener, MouseMotionListener, KeyListener, ActionListener {
     private Point p = new Point(100,100);
     private boolean drag;
-    private int score;
+    public int score;
     ArrayList<Tvar> points;
-    private Timer timer;
+    public Timer timer;
     private int pocet =1;
-    private int time = 30;
+    public int time = 30;
     private Tvar activeObj;
     private Font myFont = new Font("Aerial", Font.BOLD, 18);
-    private Font myFont2 = new Font("Aerial", Font.BOLD, 60);
+    private Font myFont2 = new Font("Aerial", Font.ITALIC, 60);
     
     
     public Platno() {
@@ -185,7 +185,7 @@ public class Platno extends JComponent implements MouseListener, MouseMotionList
             String str2 = "GAME OVER";
             Graphics2D g2 = (Graphics2D) g;
             g2.setFont(myFont2);
-            g2.setColor(Color.red);     
+            g2.setColor(Color.blue);     
             g2.drawString(str, size.width/2 -150, 290);
             g2.drawString(str2, size.width/2 -150, 220);
             timer.stop();

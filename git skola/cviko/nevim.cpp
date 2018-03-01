@@ -111,6 +111,7 @@ nevim &nevim::operator +=(const nevim& vpravo){
         delete[] this->adresa;
         this->adresa = temp;
         this->pocet_prvku = this->pocet_prvku+vpravo.getPocetPrvku();
+        this->adresa[i] = '\0';
     }
     
    

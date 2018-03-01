@@ -47,8 +47,6 @@ char * nevim::vypisStringu() const{
     return this->adresa;
 }
 
-nevim::~nevim() {
-}
 
 bool nevim::napln() {
     if(this->adresa != "") {
@@ -104,7 +102,7 @@ nevim &nevim::operator = (const nevim& vpravo){
 }
 
 nevim &nevim::operator +=(const nevim& vpravo){
-    char *temp = new char[this->pocet_prvku+vpravo.getPocetPrvku()];
+    char *temp = new char[this->pocet_prvku+vpravo.getPocetPrvku()+1];
     if(temp != ""){
         int i =0;
         for(;i< this->getPocetPrvku();i++){
@@ -131,3 +129,8 @@ nevim nevim::operator +(const nevim& vpravo) const{
     temp +=vpravo;
     return temp;
 }
+
+nevim::~nevim() {
+    delete[] this->adresa;
+}
+

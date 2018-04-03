@@ -17,6 +17,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -200,14 +201,24 @@ public class OknoSlovnik extends javax.swing.JFrame {
             PreparedStatement dotaz = spojeni.prepareStatement("UPDATE slovnicek SET cs=?, en=?, de=? WHERE id=?");
             dotaz.setString(1, csWord);
             dotaz.setString(2, enWord);
-            dotaz.setString(4, deWord);
-            dotaz.setInt(3, id);
+            dotaz.setString(3, deWord);
+            dotaz.setInt(4, id);
             numRows = dotaz.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Chyba při komunikaci s databází", "Chyba", JOptionPane.ERROR_MESSAGE);
         }
         return numRows;
     }
+    
+    /*private int testRecord(int id, String enWord, String csWord, String deWord) {
+        int numRows = 0;
+        String[] slova = {tabulka.getModel().getValueAt(tabulka.getSelectedRow(), 1).toString(), tabulka.getModel().getValueAt(tabulka.getSelectedRow(), 2).toString(),tabulka.getModel().getValueAt(tabulka.getSelectedRow(), 3).toString()};
+        
+        if(slova[1] == enWord){
+            
+           } 
+        return numRows;
+    }*/
 
     /* Metoda odstraní zvolený záznam */
     private int deleteRecord(int id) {
@@ -256,6 +267,8 @@ public class OknoSlovnik extends javax.swing.JFrame {
         delete = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         search = new javax.swing.JButton();
+        testButton = new javax.swing.JButton();
+        body = new javax.swing.JTextField();
         jazyk = new javax.swing.JComboBox();
         findText = new javax.swing.JTextField();
         showAll = new javax.swing.JButton();
@@ -364,6 +377,20 @@ public class OknoSlovnik extends javax.swing.JFrame {
         });
         jToolBar1.add(search);
 
+        testButton.setText("test");
+        testButton.setFocusable(false);
+        testButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        testButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        testButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testButtonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(testButton);
+
+        body.setText("0");
+        jToolBar1.add(body);
+
         jazyk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "cs", "en" }));
         jToolBar1.add(jazyk);
 
@@ -396,7 +423,7 @@ public class OknoSlovnik extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pocetZaznamu)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addContainerGap(558, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,6 +556,38 @@ public class OknoSlovnik extends javax.swing.JFrame {
         listData(this.getAllRecords());
     }//GEN-LAST:event_insertActionPerformed
 
+    private void testActionPerformed(java.awt.event.ActionEvent evt) {
+        Random Generator = new Random();
+        int rowCount = (int) tabulka.getModel().getRowCount();
+        String[][] slova = new String[3][10];
+        for(int i =0;i<10;i++){
+            int random = Generator.nextInt(rowCount);
+            int y = random;
+            slova[0][i] = tabulka.getModel().getValueAt(y, 1).toString();
+            slova[1][i] = tabulka.getModel().getValueAt(y, 2).toString();
+            slova[2][i] = tabulka.getModel().getValueAt(y, 3).toString();
+        }
+        testDialog testDialog = new testDialog(this, true, slova);
+        testDialog.setTitle("Test");
+       
+        if (testDialog.showDialog().equalsIgnoreCase("OK")) {
+            //testRecord(id, testDialog.getanglicky(), testDialog.getcesky(), testDialog.getnemecky());
+            /*if(!slova[1][1].equalsIgnoreCase(testDialog.getanglicky())){
+                chyby++;
+            
+           } 
+            if(!slova[2][1].equalsIgnoreCase(testDialog.getnemecky())){
+                chyby++;
+            
+           } 
+            if(!slova[0][1].equalsIgnoreCase(testDialog.getcesky())){
+                chyby++;
+            
+           } */
+           body.setText("chyby: "+testDialog.chyby);
+        }
+    }
+    
     /* Ohlasová metoda na akci Update */
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         /* zjištění id podle označeného řádku tabulky (z prvního sloupce - index 0) */
@@ -543,6 +602,7 @@ public class OknoSlovnik extends javax.swing.JFrame {
         if (slovaDialog.showDialog().equalsIgnoreCase("OK")) {
             updateRecord(id, slovaDialog.getAnglicky(), slovaDialog.getCesky(), slovaDialog.getNemecky());
         }
+        //updateRecord(id, slovaDialog.getAnglicky(), slovaDialog.getCesky(), slovaDialog.getNemecky());
         listData(this.getAllRecords());
     }//GEN-LAST:event_updateActionPerformed
 
@@ -669,6 +729,10 @@ public class OknoSlovnik extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuXMLActionPerformed
 
+    private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
+        this.testActionPerformed(null);
+    }//GEN-LAST:event_testButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -702,6 +766,7 @@ public class OknoSlovnik extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField body;
     private javax.swing.JButton delete;
     private javax.swing.JTextField findText;
     private javax.swing.JButton insert;
@@ -727,6 +792,7 @@ public class OknoSlovnik extends javax.swing.JFrame {
     private javax.swing.JButton search;
     private javax.swing.JButton showAll;
     private javax.swing.JTable tabulka;
+    private javax.swing.JButton testButton;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

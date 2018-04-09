@@ -1,0 +1,30 @@
+{* Latte template *}
+{* Makro, které zajistí vložení bloku kódu do šablony @layout.latte*}
+{block content}
+<h2>Seznam zpráv</h2>
+<div>
+    <table class="table table-bordered">
+       <thead>
+        <tr>
+            <th><a n:href="News:default 'title'"> Titulek</a></th>
+            <th><a n:href="News:default 'category'">Rubrika</a></th>
+            <th><a n:href="News:default 'created_at DESC'">Vytvořeno</a></th>
+            <th>Akce</th>
+        </tr>    
+       </thead>
+       <tbody>    
+    {foreach $data as $row}
+        <tr>
+            <td><a n:href="News:view $row->id">{$row->title|truncate:10}</a></td>
+            <td>{$row->category|upper}</td>
+            <td>{$row->created_at|date:'%d.%m.%Y'}</td>
+            <td><a n:href="News:delete $row->id" 
+                   class="btn btn-danger">Smazat</a>
+                <a n:href="News:update $row->id" 
+                   class="btn btn-info">Editovat</a></td>
+        </tr>    
+    {/foreach}
+        </tbody>
+    </table>
+        <p><a m:href="News:insert" class="btn btn-success"> Nová zpráva</a></p>
+</div>    
